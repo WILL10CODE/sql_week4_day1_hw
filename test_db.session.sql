@@ -57,11 +57,11 @@ ORDER BY last_name DESC;
 -- 9. How many payment amounts (4.99, 5.99, etc.) had a number of rentals above 250 for customers
 --with ids between 380 and 430? (use group by and having > 250)
 --There are 290 payment amounts.
-SELECT rental_id,customer_id,amount
+SELECT amount
 FROM payment
-Where rental_id > 250 and customer_id between 380 and 430 and amount > 4.99
-GROUP BY rental_id, customer_id,amount
-ORDER BY customer_id ASC;
+Where customer_id between 380 and 430
+GROUP BY amount
+HAVING COUNT(rental_id) > 250;
 
 -- 10.Within the film table, how many rating categories are there? And what rating has the most
 -- movies total?
